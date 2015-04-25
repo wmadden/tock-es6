@@ -1,0 +1,22 @@
+{
+  "name": "tock-es6",
+  "version": "1.0.0",
+  "description": "Tock written in ES6",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wmadden/tock-es6.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wmadden/tock-es6/issues"
+  },
+  "homepage": "https://github.com/wmadden/tock-es6",
+  "devDependencies": {
+    "gulp-babel": "^5.1.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-sourcemaps": "^1.5.2"
+  }
+}
