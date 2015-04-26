@@ -1,0 +1,23 @@
+{
+  "name": "tock-es6",
+  "version": "1.0.0",
+  "private": true,
+  "authors": [
+    "Will Madden <w.a.madden@gmail.com>"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.1",
+    "requirejs": "~2.1.17"
+  }
+}
