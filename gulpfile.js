@@ -93,7 +93,12 @@ gulp.task('copy-runtime-libs', function() {
 });
 
 gulp.task('build-css', function() {
-  return gulp.src(GLOB.src.css, { base: PATH.src.base })
+  return gulp.src([
+    // TODO: import this in a CSS preprocessor
+    'bower_components/foundation/css/normalize.css',
+    'bower_components/foundation/css/foundation.css',
+    GLOB.src.css
+  ], { base: PATH.src.base })
     .pipe(sourcemaps.init())
       .pipe(concat(FILE.out.css))
     .pipe(sourcemaps.write(PATH.out.maps))
