@@ -14,13 +14,12 @@
     "url": "https://github.com/wmadden/tock-es6/issues"
   },
   "homepage": "https://github.com/wmadden/tock-es6",
-  "devDependencies": {
+  "dependencies": {
+    "amd-optimize": "^0.4.3",
     "browser-sync": "^2.6.5",
     "gulp-babel": "^5.1.0",
     "gulp-concat": "^2.5.2",
-    "gulp-sourcemaps": "^1.5.2"
-  },
-  "dependencies": {
+    "gulp-sourcemaps": "^1.5.2",
     "gulp": "^3.8.11"
   }
 }
