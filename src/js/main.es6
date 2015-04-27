@@ -1,3 +1,4 @@
-import {foo} from "foo";
+import React from 'react';
+import App from 'app';
 
-foo();//
+React.render(<App />, document.getElementById('app'))
