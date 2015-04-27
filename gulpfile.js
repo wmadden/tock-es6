@@ -46,9 +46,9 @@ var GLOB = {
     static: PATH.src.static + '/*'
   },
   dist: {
-    css: 'out/dist/**/*.css',
-    js: 'out/dist/**/*.js',
-    html: 'out/dist/**/*.html'
+    css: PATH.out.dist + '/**/*.css',
+    js: PATH.out.dist + '/**/*.js',
+    html: PATH.out.dist + '/**/*.html'
   }
 };
 
@@ -79,7 +79,12 @@ gulp.task('build-js', function() {
         modules: 'amd'
       }))
       // Order files in stream based on module dependencies
-      .pipe(amdOptimize(FILE.in.jsEntryModule))
+      .pipe(amdOptimize(FILE.in.jsEntryModule, {
+        paths: {
+          'react': 'bower_components/react/react',
+          'flux': 'bower_components/flux/dist/Flux'
+        }
+      }))
       // .pipe(concat(FILE.out.js))
     .pipe(sourcemaps.write(PATH.out.maps))
     .pipe(gulp.dest(PATH.out.js));

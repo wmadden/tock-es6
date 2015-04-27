@@ -18,6 +18,8 @@
   ],
   "dependencies": {
     "foundation": "~5.5.1",
-    "requirejs": "~2.1.17"
+    "requirejs": "~2.1.17",
+    "react": "~0.13.2",
+    "flux": "~2.0.2"
   }
 }
