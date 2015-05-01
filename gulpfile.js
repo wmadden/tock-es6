@@ -6,6 +6,7 @@ var spawn = require('child_process').spawn;
 var browserSync = require('browser-sync').create();
 var amdOptimize = require('amd-optimize');
 var plumber = require('gulp-plumber');
+var debug = require('gulp-debug');
 
 var CONFIG = {
   browserSync: {
@@ -73,7 +74,7 @@ gulp.task('auto-reload', function() {
 });
 
 gulp.task('build-js', function() {
-  return gulp.src([GLOB.src.es6, GLOB.src.js], { base: PATH.src.js })
+  return gulp.src([GLOB.src.es6, GLOB.src.js, 'node_modules/material-ui/lib/**/*.js']) //
     .pipe(plumber())
     .pipe(sourcemaps.init())
       // Compile ES6 -> ES5
@@ -84,10 +85,13 @@ gulp.task('build-js', function() {
       .pipe(amdOptimize(FILE.in.jsEntryModule, {
         paths: {
           'react': 'bower_components/react/react',
-          'flux': 'bower_components/flux/dist/Flux'
-        }
+          'flux': 'bower_components/flux/dist/Flux',
+          'material-ui': 'node_modules/material-ui/lib/index'
+        },
+        findNestedDependencies: true
       }))
       // .pipe(concat(FILE.out.js))
+
     .pipe(sourcemaps.write(PATH.out.maps))
     .pipe(gulp.dest(PATH.out.js));
 });
