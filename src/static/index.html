@@ -11,7 +11,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="css/main.css">
-        <script data-main="js/main" src="js/requirejs/require.js"></script>
+        <script src="js/lib/system.src.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -19,5 +19,12 @@
         <![endif]-->
 
         <div id="app"></div>
+
+        <script type="text/javascript">
+          System.config({
+            baseURL: 'js'
+          });
+          System.import('main');
+        </script>
     </body>
 </html>
