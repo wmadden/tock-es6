@@ -6,12 +6,16 @@
   "scripts": {
     "build": "bin/run-all copy-runtime-deps build-css build-js build-html",
     "build-css": "cp -r src/css out",
+
     "prebuild-js": "npm run -s lint-js",
     "build-js": "babel src/js --out-dir out/js",
+
     "copy-runtime-deps": "mkdir -p out/js/lib && cp bower_components/system.js/dist/system.src.js out/js/lib && cp node_modules/es6-module-loader/dist/es6-module-loader.src.js out/js/lib/es6-module-loader.js",
     "lint-js": "node_modules/eslint/bin/eslint.js src/js",
     "build-html": "cp src/static/index.html out/index.html",
+
     "serve": "browser-sync start --config browser-sync-config.js",
+
     "watch": "parallelshell 'npm run -s watch-css' 'npm run -s watch-js' 'npm run -s watch-html'",
     "watch-css": "nodemon -q -w src -w bower_components --ext 'css' --exec 'npm run -s build-css'",
     "watch-js": "nodemon -q -w src -w bower_components --ext 'js,jsx' --exec 'npm run -s build-js && echo'",
@@ -29,13 +33,6 @@
     "amd-optimize": "^0.4.3",
     "browser-sync": "^2.6.5",
     "es6-module-loader": "^0.16.6",
-    "gulp": "^3.8.11",
-    "gulp-babel": "^5.1.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-concat": "^2.5.2",
-    "gulp-debug": "^2.0.1",
-    "gulp-plumber": "^1.0.0",
-    "gulp-sourcemaps": "^1.5.2",
     "material-ui": "^0.7.5",
     "react": "^0.13.2"
   },
