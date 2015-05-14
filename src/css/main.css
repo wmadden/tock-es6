@@ -1,5 +1,8 @@
-body {
-  color: green;
+.app {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/**/
+ul {
+  padding: 0;
+}
