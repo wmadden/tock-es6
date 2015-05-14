@@ -6,9 +6,9 @@
   "scripts": {
     "clean": "rm -rf out",
     "mkdir": "mkdir -p out/js",
-    "build": "bin/run-all copy-runtime-deps build-css build-js build-html",
+    "build": "bin/run copy-runtime-deps build-css build-js build-html",
     "build-css": "cp -r src/css out",
-    "prebuild-js": "./bin/run-all clean mkdir lint-js",
+    "prebuild-js": "./bin/run clean mkdir lint-js",
     "build-js": "NODE_PATH=$NODE_PATH:lib:src/js browserify --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/main.js",
     "copy-runtime-deps": "mkdir -p out/js/lib && cp bower_components/system.js/dist/system.src.js out/js/lib && cp node_modules/es6-module-loader/dist/es6-module-loader.src.js out/js/lib/es6-module-loader.js",
     "lint-js": "node_modules/eslint/bin/eslint.js src/js",
