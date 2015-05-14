@@ -9,16 +9,16 @@
     "prebuild": "bin/run clean mkdir",
     "build": "bin/run build-css build-js build-html",
     "build-css": "cp -r src/css out",
-    "prebuild-js": "bin/run clean mkdir lint-js",
+    "prebuild-js": "bin/run lint-js",
     "build-js": "NODE_PATH=$NODE_PATH:lib:src/js bin/exec browserify --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/main.js",
     "lint-js": "bin/exec eslint src/js",
     "build-html": "cp src/static/index.html out/index.html",
     "serve": "bin/exec browser-sync start --config browser-sync-config.js",
     "prewatch": "bin/run prebuild",
-    "watch": "bin/exec parallelshell 'npm run -s watch-css' 'npm run -s watch-js' 'npm run -s watch-html'",
-    "watch-css": "bin/exec nodemon -q -w src -w lib/bower_components --ext 'css' --exec 'npm run -s build-css'",
+    "watch": "bin/exec parallelshell 'bin/run watch-css' 'bin/run watch-js' 'bin/run watch-html'",
+    "watch-css": "bin/exec nodemon -q -w src -w lib/bower_components --ext 'css' --exec 'bin/run -s build-css'",
     "watch-js": "NODE_PATH=$NODE_PATH:lib:src/js bin/exec watchify --verbose --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/main.js",
-    "watch-html": "bin/exec nodemon -q -w src --ext 'html' --exec 'npm run -s build-html'"
+    "watch-html": "bin/exec nodemon -q -w src --ext 'html' --exec 'bin/run build-html'"
   },
   "repository": {
     "type": "git",
@@ -31,10 +31,13 @@
   "dependencies": {
     "babelify": "^6.1.0",
     "browser-sync": "^2.7.1",
+    "browserify": "^10.1.3",
     "eslint": "^0.21.0",
     "eslint-plugin-react": "^2.2.0",
     "flux": "^2.0.3",
     "material-ui": "^0.7.5",
+    "nodemon": "^1.3.7",
+    "parallelshell": "^1.1.1",
     "react": "^0.13.2",
     "watchify": "^3.2.1"
   }
