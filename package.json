@@ -27,17 +27,14 @@
     "url": "https://github.com/wmadden/tock-es6/issues"
   },
   "homepage": "https://github.com/wmadden/tock-es6",
-  "devDependencies": {
-    "amd-optimize": "^0.4.3",
-    "browser-sync": "^2.6.5",
-    "es6-module-loader": "^0.16.6",
-    "material-ui": "^0.7.5",
-    "react": "^0.13.2"
-  },
   "dependencies": {
     "babelify": "^6.1.0",
+    "browser-sync": "^2.7.1",
+    "eslint": "^0.21.0",
     "eslint-plugin-react": "^2.2.0",
     "flux": "^2.0.3",
+    "material-ui": "^0.7.5",
+    "react": "^0.13.2",
     "watchify": "^3.2.1"
   }
 }
