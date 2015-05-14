@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for command in $@; do
+  npm run $command
+done
