@@ -8,7 +8,7 @@
     "mkdir": "mkdir -p out/js out/css",
     "prebuild": "bin/run clean mkdir",
     "build": "bin/run build-css build-js build-html",
-    "build-css": "bin/exec lessc --source-map-less-inline --source-map-map-inline --source-map-rootpath=/ --source-map-basepath=$(pwd -P)/src --include-path=lib src/css/main.less > out/css/main.css",
+    "build-css": "bin/exec lessc --source-map-less-inline --source-map-map-inline --source-map-rootpath=/ --source-map-basepath=$(pwd -P)/src --include-path=lib:node_modules src/css/main.less > out/css/main.css",
     "prebuild-js": "bin/run lint-js",
     "build-js": "NODE_PATH=$NODE_PATH:lib:src/js bin/exec browserify --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/main.js",
     "lint-js": "bin/exec eslint src/js",
