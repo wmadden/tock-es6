@@ -1,4 +1,4 @@
-import Dispatcher from "services/Dispatcher";
+import Dispatcher from "../services/Dispatcher";
 
 export default {
   CREATE_NEW_TASK: "TASK_ACTIONS__CREATE_NEW_TASK",

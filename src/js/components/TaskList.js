@@ -1,4 +1,4 @@
-import React from "bower_components/react/react";
+import React from "react";
 
 let TaskList = React.createClass({
 

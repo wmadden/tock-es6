@@ -1,6 +1,6 @@
 import Immutable from "bower_components/immutable/dist/immutable";
-import TaskActions from "actions/TaskActions";
-import Dispatcher from "services/Dispatcher";
+import TaskActions from "../actions/TaskActions";
+import Dispatcher from "../services/Dispatcher";
 // import EventEmitter from "bower_components/eventemitter2/eventemitter2";
 
 let state = new Immutable.Map({

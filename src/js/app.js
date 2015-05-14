@@ -1,8 +1,8 @@
-import React from "bower_components/react/react";
+import React from "react";
 // import NewTaskForm from "components/NewTaskForm";
-import TaskList from "components/TaskList";
-import TasksStore from "stores/TasksStore";
-import TaskActions from "actions/TaskActions";
+import TaskList from "./components/TaskList";
+import TasksStore from "./stores/TasksStore";
+import TaskActions from "./actions/TaskActions";
 
 let App = React.createClass({
 

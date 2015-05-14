@@ -4,21 +4,19 @@
   "description": "Tock written in ES6",
   "main": "gulpfile.js",
   "scripts": {
+    "clean": "rm -rf out",
+    "mkdir": "mkdir -p out/js",
     "build": "bin/run-all copy-runtime-deps build-css build-js build-html",
     "build-css": "cp -r src/css out",
-
-    "prebuild-js": "npm run -s lint-js",
-    "build-js": "babel src/js --out-dir out/js",
-
+    "prebuild-js": "./bin/run-all clean mkdir lint-js",
+    "build-js": "NODE_PATH=$NODE_PATH:lib:src/js browserify --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/main.js",
     "copy-runtime-deps": "mkdir -p out/js/lib && cp bower_components/system.js/dist/system.src.js out/js/lib && cp node_modules/es6-module-loader/dist/es6-module-loader.src.js out/js/lib/es6-module-loader.js",
     "lint-js": "node_modules/eslint/bin/eslint.js src/js",
     "build-html": "cp src/static/index.html out/index.html",
-
     "serve": "browser-sync start --config browser-sync-config.js",
-
     "watch": "parallelshell 'npm run -s watch-css' 'npm run -s watch-js' 'npm run -s watch-html'",
-    "watch-css": "nodemon -q -w src -w bower_components --ext 'css' --exec 'npm run -s build-css'",
-    "watch-js": "nodemon -q -w src -w bower_components --ext 'js,jsx' --exec 'npm run -s build-js && echo'",
+    "watch-css": "nodemon -q -w src -w lib/bower_components --ext 'css' --exec 'npm run -s build-css'",
+    "watch-js": "NODE_PATH=$NODE_PATH:lib:src/js watchify --verbose --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/main.js",
     "watch-html": "nodemon -q -w src --ext 'html' --exec 'npm run -s build-html'"
   },
   "repository": {
@@ -37,6 +35,9 @@
     "react": "^0.13.2"
   },
   "dependencies": {
-    "eslint-plugin-react": "^2.2.0"
+    "babelify": "^6.1.0",
+    "eslint-plugin-react": "^2.2.0",
+    "flux": "^2.0.3",
+    "watchify": "^3.2.1"
   }
 }

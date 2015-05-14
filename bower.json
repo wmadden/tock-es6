@@ -26,6 +26,5 @@
     "normalize.css": "~3.0.3",
     "immutable": "~3.7.2",
     "eventemitter2": "~0.4.14"
-  },
-  "directory": "lib/bower_components"
+  }
 }

@@ -1,3 +1,3 @@
-import Flux from "bower_components/flux/dist/Flux";
+import Flux from "flux";
 
 export default new Flux.Dispatcher();
