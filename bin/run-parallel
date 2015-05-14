@@ -6,10 +6,10 @@ if [ "$1" = "-s" ]; then
 fi
 
 for command in $@; do
-  if $silent; then
-    parallel_commands="${parallel_commands} 'bin/run -s ${command}'";
-  else
+  if [ -z $silent ]; then
     parallel_commands="${parallel_commands} 'bin/run ${command}'";
+  else
+    parallel_commands="${parallel_commands} 'bin/run -s ${command}'";
   fi
 done
 

@@ -9,10 +9,10 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 for command in $@; do
-  if $silent; then
-    echo -e "run ${RED}${command}${NC}";
-    npm run -s $command;
+  echo -e "run ${RED}${command}${NC}";
+  if [ -z $silent ]; then
+    npm run $command;
   else
-    npm run $command
+    npm run -s $command;
   fi
 done
