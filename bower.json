@@ -17,13 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "foundation": "~5.5.1",
-    "requirejs": "~2.1.17",
-    "react": "~0.13.2",
-    "flux": "~2.0.2",
-    "react-foundation-apps": "~0.6.0",
-    "semantic": "~1.12.1",
-    "normalize.css": "~3.0.3",
     "immutable": "~3.7.2",
     "eventemitter2": "~0.4.14"
   }
