@@ -69,12 +69,6 @@ The CSS is written using [Less](http://lesscss.org/).
   * `less` and `browserify` are both configured to output source maps, including
     the complete original source, in their compiled output. You shouldn't need
     any additional setup in your browser to use them.
-* [Persistent authoring](https://developer.chrome.com/devtools/docs/workspaces) ("workspaces" in Chrome)
-  * To enable, add the `src`, `node_modules` and `lib` directories to your
-    workspace by right-clicking in the sources tab's navigation pane and
-    choosing "Add Folder to Workspace"
-  * Then, right-click on one of the source files and choose
-    "Map to File System Resource...", and choose the appropriate original file.
 
 ## Scripts
 
@@ -92,3 +86,12 @@ The CSS is written using [Less](http://lesscss.org/).
     * After: `./bin/run-parallel build-js build-css build-html`
     * Options:
       * `-s` - if the first argument is `-s` it will be passed as `npm run -s`
+
+## [Chrome Workspaces](https://developer.chrome.com/devtools/docs/workspaces)
+  * To enable, add the `tock-es6` directory to your workspace by right-clicking
+    in the sources tab's navigation pane and choosing "Add Folder to Workspace"
+  * Then set up mappings between your network resources and local filesystem:
+    * Open DevTools > Settings > Workspaces
+    * Double-click on the project folder in the list
+    * Set up mappings equivalent to these:
+      ![Image of source mappings](http://i58.tinypic.com/ixz5uv.jpg)
