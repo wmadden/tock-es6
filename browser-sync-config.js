@@ -15,18 +15,12 @@ module.exports = {
     "ui": {
         "port": 9001,
     },
-    "files": ['out', 'bower_components/**/*'],
+    "files": ['out'],
     "server": {
-      baseDir: [ 'out' ],
-      routes: {
-        "/bower_components": "bower_components",
-        "/js/bower_components": "bower_components",
-        "/js/node_modules": "node_modules"
-      }
+      baseDir: [ 'out' ]
     },
     "proxy": false,
     port: 9000,
     "open": false,
-    "reloadDebounce": 1000,
     "host": 'tock.dev'
 };
