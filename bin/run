@@ -15,4 +15,5 @@ for command in $@; do
   else
     npm run -s $command;
   fi
+  echo -e "done ${RED}${command}${NC}";
 done
