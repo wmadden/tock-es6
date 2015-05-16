@@ -12,15 +12,15 @@
  |
  */
 module.exports = {
+    port: 9002,
     "ui": {
-        "port": 9001,
+        "port": 9003,
     },
     "files": ['out'],
     "server": {
       baseDir: [ 'out' ]
     },
     "proxy": false,
-    port: 9000,
     "open": false,
     "host": 'tock.dev'
 };
