@@ -17,7 +17,7 @@
     "prewatch": "bin/run -s prebuild",
     "watch": "bin/run-parallel -s watch-css watch-js watch-lint-js watch-html",
     "watch-css": "bin/exec nodemon -q -w src -w lib/bower_components --ext 'css,less' --exec 'bin/run build-css'",
-    "watch-js": "NODE_PATH=$NODE_PATH:lib:src/js bin/exec watchify --verbose --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/main.js",
+    "watch-js": "NODE_PATH=$NODE_PATH:lib:src/js bin/exec watchify --verbose --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/all.js",
     "watch-lint-js": "bin/exec nodemon -q -w src --ext 'js' --exec 'bin/run -s lint-js'",
     "watch-html": "bin/exec nodemon -q -w src --ext 'html' --exec 'bin/run build-html'"
   },
