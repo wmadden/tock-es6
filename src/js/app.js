@@ -7,9 +7,12 @@ import TaskActions from "./actions/TaskActions";
 let App = React.createClass({
 
   render() {
-    return <div className="ui segment">
-      <TaskList tasks={ TasksStore.getTasks() } />
-      {/* <NewTaskForm onNewTask={ this.createNewTask.bind(this) }/>*/}
+    return <div className="app">
+      <h1>Tock</h1>
+      <div>
+        <TaskList tasks={ TasksStore.getTasks() } />
+        {/* <NewTaskForm onNewTask={ this.createNewTask.bind(this) }/>*/}
+      </div>
     </div>;
   },
 

@@ -1,28 +1,24 @@
 import React from "react";
-import { /*RaisedButton, Paper,*/ Menu } from "material-ui";
-
-var numberMenuItems = [
-   { payload: '1', text: 'All', number: '22' },
-   { payload: '3', text: 'Uncategorized', number: '6'},
-   { payload: '4', text: 'Trash', number: '11' }
-];
-
+import { FlatButton, Paper } from "material-ui";
 let TaskList = React.createClass({
 
   render() {
-    return <Menu menuItems={numberMenuItems} />;
-    //
-    // <Paper zDepth={1}>
-    //   <ul className="ui fluid vertical menu">
-    //   {
-    //     this.props.tasks.map( (task) => {
-    //       return <li>
-    //         <RaisedButton label={ task.description } />
-    //       </li>;
-    //     })
-    //   }
-    //   </ul>
-    // </Paper>;
+    return <Paper zDepth={1}>
+      <ul className="list--no-markers">
+        {
+          this.props.tasks.map( (task) => {
+            return <li className="task">
+              {task.description}
+              <div className="task__actions">
+                <FlatButton>Start</FlatButton>
+                <FlatButton>Delete</FlatButton>
+                <FlatButton>Done</FlatButton>
+              </div>
+            </li>;
+          })
+        }
+      </ul>
+    </Paper>;
   }
 
 });

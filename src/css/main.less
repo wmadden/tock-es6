@@ -2,14 +2,32 @@
 @import 'material-ui/src/less/components';
 @import 'app';
 
-body {
-  color: black;
-}
 .app {
   max-width: 600px;
+  padding:0 18px;
   margin: 0 auto;
 }
 
-ul {
-  padding: 0;
+.task {
+  .mui-font-style-body-1;
+  padding-left: 12px;
+  padding-right: 0;
+  padding-bottom: 6px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  line-height: 36px;
+  border-bottom: 1px solid @grey-50;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.task__actions {
+  float: right;
+}
+
+.list--no-markers {
+  list-style-type: none;
 }
