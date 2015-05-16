@@ -6,16 +6,16 @@ import TaskActions from "./actions/TaskActions";
 
 let App = React.createClass({
 
-    render() {
-      return <div className="ui segment">
-        <TaskList tasks={ TasksStore.getTasks() } />
-        {/* <NewTaskForm onNewTask={ this.createNewTask.bind(this) }/>*/}
-      </div>;
-    },
+  render() {
+    return <div className="ui segment">
+      <TaskList tasks={ TasksStore.getTasks() } />
+      {/* <NewTaskForm onNewTask={ this.createNewTask.bind(this) }/>*/}
+    </div>;
+  },
 
-    createNewTask(spec) {
-      TaskActions.createNewTask(spec);
-    }
+  createNewTask(spec) {
+    TaskActions.createNewTask(spec);
+  }
 
 });
 
