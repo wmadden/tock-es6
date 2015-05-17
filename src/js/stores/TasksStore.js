@@ -8,6 +8,7 @@ let idCounter = 0;
 function newTask({ description }) {
   return {
     id: idCounter++,
+    completedPomodoros: 0,
     description
   };
 }
@@ -16,6 +17,7 @@ let tasks = new Immutable.List([
   newTask({ description: "Something" }),
   newTask({ description: "Something else"})
 ]);
+let currentTask;
 
 let eventEmitter = new EventEmitter();
 
@@ -30,6 +32,10 @@ let TasksStore = {
 
   getTasks() {
     return tasks.toJS();
+  },
+
+  getCurrentTask() {
+    return currentTask;
   }
 };
 
@@ -45,6 +51,24 @@ function handleAction(payload) {
   else if (payload.actionType === TaskActions.DELETE_TASK) {
     let id = payload.id;
     tasks = tasks.filter((task) => task.id !== id);
+    emitChange();
+  }
+  else if (payload.actionType === TaskActions.SELECT_TASK) {
+    let taskId = payload.id;
+    let task = tasks.find((t) => t.id === taskId);
+    if (!task) {
+      throw new Error(`Can't find task with ID ${taskId}`);
+    }
+
+    currentTask = task;
+    emitChange();
+  }
+  else if (payload.actionType === TaskActions.DESELECT_TASK) {
+    if (!currentTask) {
+      throw new Error("Can't deslect task; no task is selected");
+    }
+
+    currentTask = null;
     emitChange();
   }
 }
