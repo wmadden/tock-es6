@@ -1,5 +1,6 @@
 import React from "react";
 import { FlatButton, TextField } from "material-ui";
+
 let TaskList = React.createClass({
 
   getInitialState() {
@@ -7,16 +8,18 @@ let TaskList = React.createClass({
   },
 
   render() {
-    return <form class="new-task-form" onSubmit={ (e) => { e.preventDefault(); this.planTask } }>
-      <TextField
-        onChange={ this.setDescription }
+    return <form class="new-task-form"
+      onSubmit={ (e) => { e.preventDefault(); this.planTask(); } }>
+
+      <TextField className="new-task-form__input"
         value={ this.state.description }
         hintText="What are you working on next?"
         errorText={ this.state.errorText }
-        className="new-task-form__input" />
+        onChange={ this.setDescription } />
 
       <FlatButton label="Plan" onClick={ this.planTask } />
       <FlatButton label="Start" />
+
     </form>;
   },
 
@@ -33,7 +36,6 @@ let TaskList = React.createClass({
     this.props.newTask({ description: this.state.description });
     this.setState({ description: null });
   }
-
 
 });
 
