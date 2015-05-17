@@ -1,5 +1,6 @@
 import Immutable from "bower_components/immutable/dist/immutable";
 import TaskActions from "actions/TaskActions";
+import * as PomodoroActions from "actions/PomodoroActions";
 import Dispatcher from "services/Dispatcher";
 import { EventEmitter } from "events";
 
@@ -43,32 +44,56 @@ function emitChange() {
   eventEmitter.emit("change");
 }
 
+function createTask(spec) {
+  tasks = tasks.push(newTask(spec));
+}
+
+function selectTask(taskId) {
+  let task = tasks.find((t) => t.id === taskId);
+  if (!task) {
+    throw new Error(`Can't find task with ID ${taskId}`);
+  }
+  currentTask = task;
+}
+
+function deselectTask() {
+  currentTask = null;
+}
+
+function deleteTask(id) {
+  tasks = tasks.filter((task) => task.id !== id);
+
+  if (id === currentTask.id) {
+    deselectTask();
+  }
+}
+
+function incrementCompletedPomodoros() {
+  currentTask.completedPomodoros += 1;
+}
+
 function handleAction(payload) {
   if (payload.actionType === TaskActions.CREATE_NEW_TASK) {
-    tasks = tasks.push(newTask(payload.spec));
+    let { description } = payload.spec;
+    createTask({ description });
     emitChange();
   }
   else if (payload.actionType === TaskActions.DELETE_TASK) {
     let id = payload.id;
-    tasks = tasks.filter((task) => task.id !== id);
+    deleteTask(id);
     emitChange();
   }
   else if (payload.actionType === TaskActions.SELECT_TASK) {
     let taskId = payload.id;
-    let task = tasks.find((t) => t.id === taskId);
-    if (!task) {
-      throw new Error(`Can't find task with ID ${taskId}`);
-    }
-
-    currentTask = task;
+    selectTask(taskId);
     emitChange();
   }
   else if (payload.actionType === TaskActions.DESELECT_TASK) {
-    if (!currentTask) {
-      throw new Error("Can't deslect task; no task is selected");
-    }
-
-    currentTask = null;
+    deselectTask();
+    emitChange();
+  }
+  else if (payload.actionType === PomodoroActions.FINISHED) {
+    incrementCompletedPomodoros();
     emitChange();
   }
 }
