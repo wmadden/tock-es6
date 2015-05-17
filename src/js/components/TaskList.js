@@ -11,7 +11,7 @@ let TaskList = React.createClass({
               {task.description}
               <div className="task__actions">
                 <FlatButton>Start</FlatButton>
-                <FlatButton>Delete</FlatButton>
+                <FlatButton onClick={ () => this.props.deleteTask(task) }>Delete</FlatButton>
                 <FlatButton>Done</FlatButton>
               </div>
             </li>;

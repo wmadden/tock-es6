@@ -6,10 +6,19 @@ import TaskActions from "actions/TaskActions";
 
 let TaskListScreen = React.createClass({
 
+  getInitialState() {
+    return this.getStateFromStores();
+  },
+
+  getStateFromStores() {
+    return { tasks: TasksStore.getTasks() };
+  },
+
   render() {
     return <div>
       <div className="task-list-screen__list">
-        <TaskList tasks={ TasksStore.getTasks() } />
+        <TaskList tasks={ this.state.tasks }
+          deleteTask={ this.deleteTask } />
       </div>
 
       <NewTaskForm newTask={ this.createNewTask }/>
@@ -17,8 +26,23 @@ let TaskListScreen = React.createClass({
   },
 
   createNewTask(spec) {
-    return console.log("New task", spec);
     TaskActions.createNewTask(spec);
+  },
+
+  deleteTask(task) {
+    TaskActions.deleteTask(task);
+  },
+
+  componentWillMount() {
+    TasksStore.addChangeListener(this.onChange);
+  },
+
+  componentWillUnmount() {
+    TasksStore.removeChangeListener(this.onChange);
+  },
+
+  onChange() {
+    this.setState(this.getStateFromStores());
   }
 
 });
