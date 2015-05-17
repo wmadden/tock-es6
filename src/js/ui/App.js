@@ -2,10 +2,7 @@ import React from "react";
 import TaskListScreen from "ui/TaskListScreen";
 import TaskDetailScreen from "ui/TaskDetailScreen";
 import TasksStore from "stores/TasksStore";
-
-function branch(condition, whenTrue, whenFalse) {
-  return condition ? whenTrue() : whenFalse();
-}
+import { branch } from "components/helpers";
 
 let App = React.createClass({
 
