@@ -12,11 +12,12 @@ let TaskListScreen = React.createClass({
         <TaskList tasks={ TasksStore.getTasks() } />
       </div>
 
-      <NewTaskForm onNewTask={ this.createNewTask.bind(this) }/>
+      <NewTaskForm newTask={ this.createNewTask }/>
     </div>;
   },
 
   createNewTask(spec) {
+    return console.log("New task", spec);
     TaskActions.createNewTask(spec);
   }
 

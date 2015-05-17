@@ -1,5 +1,5 @@
 import React from "react";
-import TaskListScreen from "components/TaskListScreen";
+import TaskListScreen from "ui/TaskListScreen";
 
 let App = React.createClass({
 
