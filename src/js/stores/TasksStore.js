@@ -63,7 +63,7 @@ function deselectTask() {
 function deleteTask(id) {
   tasks = tasks.filter((task) => task.id !== id);
 
-  if (id === currentTask.id) {
+  if (currentTask && id === currentTask.id) {
     deselectTask();
   }
 }
