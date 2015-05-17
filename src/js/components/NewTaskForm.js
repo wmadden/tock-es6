@@ -17,8 +17,8 @@ let TaskList = React.createClass({
         errorText={ this.state.errorText }
         onChange={ this.setDescription } />
 
-      <FlatButton label="Plan" onClick={ this.planTask } />
-      <FlatButton label="Start" />
+      <FlatButton label="Plan" />
+      <FlatButton label="Start" onClick={ (e) => e.preventDefault() } />
 
     </form>;
   },
