@@ -14,10 +14,7 @@ function newTask({ description }) {
   };
 }
 
-let tasks = new Immutable.List([
-  newTask({ description: "Something" }),
-  newTask({ description: "Something else"})
-]);
+let tasks = new Immutable.List([]);
 let currentTask;
 
 let eventEmitter = new EventEmitter();
