@@ -18,6 +18,7 @@ let TaskListScreen = React.createClass({
     return <div>
       <div className="task-list-screen__list">
         <TaskList tasks={ this.state.tasks }
+          selectTask={ this.selectTask }
           deleteTask={ this.deleteTask } />
       </div>
 
@@ -31,6 +32,10 @@ let TaskListScreen = React.createClass({
 
   deleteTask(task) {
     TaskActions.deleteTask(task);
+  },
+
+  selectTask(task) {
+    TaskActions.selectTask(task);
   },
 
   componentWillMount() {

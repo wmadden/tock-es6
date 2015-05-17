@@ -7,11 +7,13 @@ let TaskList = React.createClass({
       <ul className="list--no-markers">
         {
           this.props.tasks.map( (task) => {
-            return <li className="task">
+            return <li className="task" onClick={ () => this.props.selectTask(task) }>
               {task.description}
               <div className="task__actions">
                 <FlatButton>Start</FlatButton>
-                <FlatButton onClick={ () => this.props.deleteTask(task) }>Delete</FlatButton>
+                <FlatButton
+                  label="Delete"
+                  onClick={ (e) => { e.stopPropagation(); this.props.deleteTask(task) } } />
                 <FlatButton>Done</FlatButton>
               </div>
             </li>;
