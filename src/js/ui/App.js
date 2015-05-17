@@ -21,7 +21,7 @@ let App = React.createClass({
 
   render() {
     return <div className="app">
-      <h1>Tock</h1>
+      <h4>Tock</h4>
       { branch( this.state.currentTask,
           () => <TaskDetailScreen />,
           () => <TaskListScreen />
