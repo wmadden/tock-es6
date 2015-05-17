@@ -16,7 +16,7 @@ function ljust(string, minLength, padder = ' ') {
 }
 
 function formatDuration(milliseconds) {
-  let seconds = Math.round(milliseconds / 100);
+  let seconds = Math.round(milliseconds / 1000);
   if (seconds === 0) {
     return "00:00";
   }
