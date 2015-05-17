@@ -8,7 +8,7 @@ let TaskList = React.createClass({
   },
 
   render() {
-    return <form class="new-task-form"
+    return <form className="new-task-form"
       onSubmit={ (e) => { e.preventDefault(); this.planTask(); } }>
 
       <TextField className="new-task-form__input"
