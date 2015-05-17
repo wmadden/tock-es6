@@ -19,6 +19,7 @@ let TaskListScreen = React.createClass({
       <div className="task-list-screen__list">
         <TaskList tasks={ this.state.tasks }
           selectTask={ this.selectTask }
+          selectTaskAndStartPomodoro={ this.selectTaskAndStartPomodoro }
           deleteTask={ this.deleteTask } />
       </div>
 
@@ -36,6 +37,10 @@ let TaskListScreen = React.createClass({
 
   selectTask(task) {
     TaskActions.selectTask(task);
+  },
+
+  selectTaskAndStartPomodoro(task) {
+    TaskActions.selectTaskAndStartPomodoro(task);
   },
 
   componentWillMount() {
