@@ -25,7 +25,7 @@ let TaskDetailScreen = React.createClass({
       <div className="task-detail__actions">
         <FlatButton>Start</FlatButton>
         <FlatButton>Stop</FlatButton>
-        <FlatButton>Delete</FlatButton>
+        <FlatButton onClick={ this.deleteTask }>Delete</FlatButton>
         <FlatButton>Finished</FlatButton>
       </div>
     </div>;
@@ -33,6 +33,10 @@ let TaskDetailScreen = React.createClass({
 
   deselectTask() {
     TaskActions.deselectTask();
+  },
+
+  deleteTask() {
+    TaskActions.deleteTask(this.state.task);
   },
 
   componentWillMount() {
