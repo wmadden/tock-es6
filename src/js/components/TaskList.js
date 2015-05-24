@@ -9,7 +9,7 @@ let TaskList = React.createClass({
           this.props.tasks.map( (task) => {
             return <li className="task" onClick={ () => this.props.selectTask(task) }>
               { task.description }
-              { task.completedPomodoros > 0 ? ` (${task.completedPomodoros})` : '' }
+              { task.completedPomodoros > 0 ? ` (${task.completedPomodoros})` : "" }
               <div className="task__actions">
                 <FlatButton
                   onClick={ (e) => {

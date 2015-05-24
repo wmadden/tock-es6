@@ -6,7 +6,7 @@ import * as PomodoroActions from "actions/PomodoroActions";
 import { FlatButton, Paper } from "material-ui";
 import { branch } from "components/helpers";
 
-function ljust(string, minLength, padder = ' ') {
+function ljust(string, minLength, padder = " ") {
   string = string.toString();
   let paddingLength = minLength - string.length;
   if (paddingLength < 0) {
@@ -27,10 +27,10 @@ function formatDuration(milliseconds) {
   ].map( (count) => {
     let n = seconds % count;
     seconds = Math.floor(seconds / count);
-    return ljust(n, 2, '0');
+    return ljust(n, 2, "0");
   });
 
-  return result.reverse().join(':');
+  return result.reverse().join(":");
 }
 
 let TaskDetailScreen = React.createClass({
