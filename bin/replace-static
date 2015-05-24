@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var replace = require("replace");
+var REPLACEMENTS = JSON.parse(process.env.npm_package_config_replacements);
+
+Object.keys(REPLACEMENTS).forEach( function(key) {
+  var searchString = "__" + key + "__";
+  var replacement = REPLACEMENTS[key];
+
+  replace({
+    regex: searchString,
+    replacement: replacement,
+    paths: ["out"],
+    recursive: true,
+    silent: false
+  });
+});
