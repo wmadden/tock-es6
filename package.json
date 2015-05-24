@@ -3,23 +3,29 @@
   "version": "1.0.0",
   "description": "Tock written in ES6",
   "main": "gulpfile.js",
+  "config": {
+    "replacements": "{ \"version\": \"1\" }"
+  },
   "scripts": {
+    "echo": "echo $npm_package_config_replacements",
     "clean": "rm -rf out",
-    "mkdir": "mkdir -p out/js out/css .tmp",
+    "mkdir": "mkdir -p out/js out/css .tmp out/lifecycle",
     "prebuild": "bin/run clean mkdir",
     "build": "bin/run build-css build-js build-html",
     "build-css": "bin/exec lessc --source-map-less-inline --source-map-map-inline --source-map-rootpath=/ --source-map-basepath=$(pwd -P)/src --include-path=lib:node_modules src/css/main.less > .tmp/main.css && mv .tmp/main.css out/css/main.css",
     "prebuild-js": "bin/run -s lint-js",
     "build-js": "NODE_PATH=$NODE_PATH:lib:src/js bin/exec browserify --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/main.js",
+    "build-lifecycle-js": "NODE_PATH=$NODE_PATH:lib:src/js bin/exec browserify --debug -t [babelify --sourceMapRelative src/js] src/js/lifecycle/background.js -o out/js/lifecycle/background.js",
     "lint-js": "bin/exec eslint src/js",
-    "build-html": "cp src/static/index.html out/index.html",
+    "build-static": "cp -r src/static/* out/ && bin/replace-static",
     "serve": "bin/exec browser-sync start --config browser-sync-config.js",
     "prewatch": "bin/run -s prebuild",
-    "watch": "bin/run-parallel -s watch-css watch-js watch-lint-js watch-html",
+    "watch": "bin/run-parallel -s watch-css watch-js watch-lifecycle-js watch-static",
     "watch-css": "bin/exec nodemon -q -w src -w lib/bower_components --ext 'css,less' --exec 'bin/run build-css'",
     "watch-js": "NODE_PATH=$NODE_PATH:lib:src/js bin/exec watchify --verbose --debug -t [babelify --sourceMapRelative src/js] src/js/main.js -o out/js/all.js",
+    "watch-lifecycle-js": "NODE_PATH=$NODE_PATH:lib:src/js bin/exec watchify --verbose --debug -t [babelify --sourceMapRelative src/js] src/js/lifecycle/background.js -o out/lifecycle/background.js",
     "watch-lint-js": "bin/exec nodemon -q -w src --ext 'js' --exec 'bin/run -s lint-js'",
-    "watch-html": "bin/exec nodemon -q -w src --ext 'html' --exec 'bin/run build-html'"
+    "watch-static": "bin/exec nodemon -q -w src --ext 'html' --ext 'json' --exec 'bin/run build-static'"
   },
   "repository": {
     "type": "git",
@@ -34,7 +40,7 @@
     "browser-sync": "^2.7.1",
     "browserify": "^10.1.3",
     "eslint": "^0.21.0",
-    "eslint-plugin-react": "^2.2.0",
+    "eslint-plugin-react": "^2.3.0",
     "flux": "^2.0.3",
     "less": "^2.5.0",
     "material-ui": "^0.7.5",

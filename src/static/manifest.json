@@ -1,0 +1,21 @@
+{
+    "name": "Tock ES6",
+    "description": "Tock written in ES6",
+    "version": "__version__",
+    "manifest_version": 2,
+    "permissions": [
+        "storage",
+        "notifications"
+    ],
+    "icons": {
+        "16": "images/icon-16.png",
+        "128": "images/icon-128.png"
+    },
+    "app": {
+        "background": {
+            "scripts": [
+                "lifecycle/background.js"
+            ]
+        }
+    }
+}
