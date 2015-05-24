@@ -55,7 +55,7 @@ let PomodoroStore = {
 
   getPomodoroDuration() {
     return pomodoroDuration;
-  }
+  },
 };
 
 function emitChange() {
@@ -66,27 +66,22 @@ function handleAction(payload) {
   if (payload.actionType === PomodoroActions.START) {
     startPomodoro();
     emitChange();
-  }
-  else if (payload.actionType === PomodoroActions.STOP) {
+  } else if (payload.actionType === PomodoroActions.STOP) {
     stopPomodoro();
     emitChange();
-  }
-  else if (payload.actionType === PomodoroActions.FINISHED) {
+  } else if (payload.actionType === PomodoroActions.FINISHED) {
     stopPomodoro();
     emitChange();
-  }
-  else if (payload.actionType === PomodoroActions.TICK) {
+  } else if (payload.actionType === PomodoroActions.TICK) {
     updatePomodoroDuration();
     emitChange();
-  }
-  else if (payload.actionType === TaskActions.DELETE_TASK) {
+  } else if (payload.actionType === TaskActions.DELETE_TASK) {
     Dispatcher.waitFor([TasksStore.dispatchToken]);
     if (!TasksStore.getCurrentTask()) {
       stopPomodoro();
     }
     emitChange();
-  }
-  else if (payload.actionType === TaskActions.DESELECT_TASK) {
+  } else if (payload.actionType === TaskActions.DESELECT_TASK) {
     Dispatcher.waitFor([TasksStore.dispatchToken]);
     if (!TasksStore.getCurrentTask()) {
       stopPomodoro();

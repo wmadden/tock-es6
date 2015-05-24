@@ -7,24 +7,24 @@ export const TICK = "POMODORO_ACTIONS__TICK";
 
 export function start() {
   Dispatcher.dispatch({
-    actionType: START
+    actionType: START,
   });
 }
 
 export function stop() {
   Dispatcher.dispatch({
-    actionType: STOP
+    actionType: STOP,
   });
 }
 
 export function finished() {
   Dispatcher.dispatch({
-    actionType: FINISHED
+    actionType: FINISHED,
   });
 }
 
 export function tick() {
   Dispatcher.dispatch({
-    actionType: TICK
+    actionType: TICK,
   });
 }

@@ -10,28 +10,28 @@ function createNewTask({ description }) {
   Dispatcher.dispatch({
     actionType: CREATE_NEW_TASK,
     spec: {
-      description
-    }
+      description,
+    },
   });
 }
 
 function deleteTask({ id }) {
   Dispatcher.dispatch({
     actionType: DELETE_TASK,
-    id
+    id,
   });
 }
 
 function selectTask({ id }) {
   Dispatcher.dispatch({
     actionType: SELECT_TASK,
-    id
+    id,
   });
 }
 
 function deselectTask() {
   Dispatcher.dispatch({
-    actionType: DESELECT_TASK
+    actionType: DESELECT_TASK,
   });
 }
 
@@ -49,5 +49,5 @@ export default {
   selectTask,
   selectTaskAndStartPomodoro,
   deselectTask,
-  createNewTask
+  createNewTask,
 };

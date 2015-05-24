@@ -10,22 +10,6 @@ let App = React.createClass({
     return this.getStateFromStores();
   },
 
-  getStateFromStores() {
-    return {
-      currentTask: TasksStore.getCurrentTask()
-    };
-  },
-
-  render() {
-    return <div className="app">
-      <h4>Tock</h4>
-      { branch( this.state.currentTask,
-          () => <TaskDetailScreen />,
-          () => <TaskListScreen />
-        ) }
-    </div>;
-  },
-
   componentWillMount() {
     TasksStore.addChangeListener(this.onChange);
   },
@@ -36,7 +20,25 @@ let App = React.createClass({
 
   onChange() {
     this.setState(this.getStateFromStores());
-  }
+  },
+
+  getStateFromStores() {
+    return {
+      currentTask: TasksStore.getCurrentTask(),
+    };
+  },
+
+  render() {
+    return (
+      <div className="app">
+        <h4>Tock</h4>
+        { branch( this.state.currentTask,
+            () => <TaskDetailScreen />,
+            () => <TaskListScreen />
+          ) }
+      </div>
+    );
+  },
 
 });
 

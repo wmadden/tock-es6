@@ -3,24 +3,30 @@ import { FlatButton, TextField } from "material-ui";
 
 let TaskList = React.createClass({
 
+  propTypes: {
+    newTask: React.PropTypes.func.isRequired,
+  },
+
   getInitialState() {
     return {};
   },
 
   render() {
-    return <form className="new-task-form"
-      onSubmit={ (e) => { e.preventDefault(); this.planTask(); } }>
+    return (
+      <form className="new-task-form"
+        onSubmit={ (e) => { e.preventDefault(); this.planTask(); } }>
 
-      <TextField className="new-task-form__input"
-        value={ this.state.description }
-        hintText="What are you working on next?"
-        errorText={ this.state.errorText }
-        onChange={ this.setDescription } />
+        <TextField className="new-task-form__input"
+          value={ this.state.description }
+          hintText="What are you working on next?"
+          errorText={ this.state.errorText }
+          onChange={ this.setDescription } />
 
-      <FlatButton label="Plan" />
-      <FlatButton label="Start" onClick={ (e) => e.preventDefault() } />
+        <FlatButton label="Plan" />
+        <FlatButton label="Start" onClick={ (e) => e.preventDefault() } />
 
-    </form>;
+      </form>
+    );
   },
 
   setDescription(e) {
@@ -35,7 +41,7 @@ let TaskList = React.createClass({
     }
     this.props.newTask({ description: this.state.description });
     this.setState({ description: null });
-  }
+  },
 
 });
 

@@ -10,21 +10,35 @@ let TaskListScreen = React.createClass({
     return this.getStateFromStores();
   },
 
+  componentWillMount() {
+    TasksStore.addChangeListener(this.onChange);
+  },
+
+  componentWillUnmount() {
+    TasksStore.removeChangeListener(this.onChange);
+  },
+
+  onChange() {
+    this.setState(this.getStateFromStores());
+  },
+
   getStateFromStores() {
     return { tasks: TasksStore.getTasks() };
   },
 
   render() {
-    return <div>
-      <div className="task-list-screen__list">
-        <TaskList tasks={ this.state.tasks }
-          selectTask={ this.selectTask }
-          selectTaskAndStartPomodoro={ this.selectTaskAndStartPomodoro }
-          deleteTask={ this.deleteTask } />
-      </div>
+    return (
+      <div>
+        <div className="task-list-screen__list">
+          <TaskList tasks={ this.state.tasks }
+            selectTask={ this.selectTask }
+            selectTaskAndStartPomodoro={ this.selectTaskAndStartPomodoro }
+            deleteTask={ this.deleteTask } />
+        </div>
 
-      <NewTaskForm newTask={ this.createNewTask }/>
-    </div>;
+        <NewTaskForm newTask={ this.createNewTask }/>
+      </div>
+    );
   },
 
   createNewTask(spec) {
@@ -42,18 +56,6 @@ let TaskListScreen = React.createClass({
   selectTaskAndStartPomodoro(task) {
     TaskActions.selectTaskAndStartPomodoro(task);
   },
-
-  componentWillMount() {
-    TasksStore.addChangeListener(this.onChange);
-  },
-
-  componentWillUnmount() {
-    TasksStore.removeChangeListener(this.onChange);
-  },
-
-  onChange() {
-    this.setState(this.getStateFromStores());
-  }
 
 });
 

@@ -10,7 +10,7 @@ function newTask({ description }) {
   return {
     id: idCounter++,
     completedPomodoros: 0,
-    description
+    description,
   };
 }
 
@@ -34,7 +34,7 @@ let TasksStore = {
 
   getCurrentTask() {
     return currentTask;
-  }
+  },
 };
 
 function emitChange() {
@@ -74,22 +74,18 @@ function handleAction(payload) {
     let { description } = payload.spec;
     createTask({ description });
     emitChange();
-  }
-  else if (payload.actionType === TaskActions.DELETE_TASK) {
+  } else if (payload.actionType === TaskActions.DELETE_TASK) {
     let id = payload.id;
     deleteTask(id);
     emitChange();
-  }
-  else if (payload.actionType === TaskActions.SELECT_TASK) {
+  } else if (payload.actionType === TaskActions.SELECT_TASK) {
     let taskId = payload.id;
     selectTask(taskId);
     emitChange();
-  }
-  else if (payload.actionType === TaskActions.DESELECT_TASK) {
+  } else if (payload.actionType === TaskActions.DESELECT_TASK) {
     deselectTask();
     emitChange();
-  }
-  else if (payload.actionType === PomodoroActions.FINISHED) {
+  } else if (payload.actionType === PomodoroActions.FINISHED) {
     incrementCompletedPomodoros();
     emitChange();
   }
