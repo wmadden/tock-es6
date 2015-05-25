@@ -14,7 +14,7 @@
     "app": {
         "background": {
             "scripts": [
-                "lifecycle/background.js"
+                "chrome/background.js"
             ]
         }
     }
