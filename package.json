@@ -25,7 +25,7 @@
     "watch-js": "NODE_PATH=$NODE_PATH:lib:src bin/exec watchify --verbose --debug -t [babelify --sourceMapRelative src] src/main.js -o out/js/all.js",
     "watch-chrome-js": "NODE_PATH=$NODE_PATH:lib:src bin/exec watchify --verbose --debug -t [babelify --sourceMapRelative src] src/chrome/background.js -o out/chrome/background.js",
     "watch-lint-js": "bin/exec nodemon -q -w src --ext 'js' --exec 'bin/run -s lint-js'",
-    "watch-static": "bin/exec nodemon -w src/static --ext 'html,json,js' --exec 'bin/run build-static'"
+    "watch-static": "bin/exec nodemon -q -w src/static --ext 'html,json,js' --exec 'bin/run build-static'"
   },
   "repository": {
     "type": "git",
