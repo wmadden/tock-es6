@@ -1,5 +1,5 @@
 import * as PomodoroActions from "actions/PomodoroActions";
-import * as BreakActions from "actions/PomodoroActions";
+import * as BreakActions from "actions/BreakActions";
 import Dispatcher from "services/Dispatcher";
 import * as AudioService from "services/AudioService";
 
