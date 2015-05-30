@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatButton, TextField } from "material-ui";
+import { IconButton, SvgIcon, TextField } from "material-ui";
 
 let TaskList = React.createClass({
 
@@ -14,6 +14,7 @@ let TaskList = React.createClass({
   render() {
     return (
       <form className="new-task-form"
+        style={{ borderTop: "1px solid #f0f0f0" }}
         onSubmit={ (e) => { e.preventDefault(); this.planTask(); } }>
 
         <TextField className="new-task-form__input"
@@ -22,9 +23,13 @@ let TaskList = React.createClass({
           errorText={ this.state.errorText }
           onChange={ this.setDescription } />
 
-        <FlatButton label="Plan" />
-        <FlatButton label="Start" onClick={ (e) => e.preventDefault() } />
+        <IconButton tooltip="Plan task">
+          <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_add_24px" />
+        </IconButton>
 
+        <IconButton tooltip="Start Pomodoro">
+          <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_play_arrow_24px" />
+        </IconButton>
       </form>
     );
   },

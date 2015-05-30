@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatButton, Paper } from "material-ui";
+import { IconButton, SvgIcon, Paper } from "material-ui";
 let TaskList = React.createClass({
 
   propTypes: {
@@ -10,28 +10,42 @@ let TaskList = React.createClass({
   },
 
   render() {
+    function taskItem(task) {
+      return (
+        <li className="task" onClick={ () => this.props.selectTask(task) }>
+          { task.description }
+          { task.completedPomodoros > 0 ? ` (${task.completedPomodoros})` : "" }
+          <div className="task__actions">
+            <IconButton
+              tooltip="Start Pomodoro"
+              onClick={ (e) => { e.stopPropagation(); this.props.selectTaskAndStartPomodoro(task); }}
+            >
+              <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_play_arrow_24px" />
+            </IconButton>
+
+            <IconButton
+              tooltip="Delete task"
+              onClick={ (e) => { e.stopPropagation(); this.props.deleteTask(task); }}
+            >
+              <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_delete_24px" />
+            </IconButton>
+
+            <IconButton
+              tooltip="Mark completed"
+              onClick={ (e) => { e.stopPropagation(); }}
+            >
+              <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_done_24px" />
+            </IconButton>
+          </div>
+        </li>
+      );
+    }
+
     return (
-      <Paper zDepth={1}>
+      <Paper zDepth={0}>
         <ul className="list--no-markers">
           {
-            this.props.tasks.map( (task) => {
-              return (
-                <li className="task" onClick={ () => this.props.selectTask(task) }>
-                  { task.description }
-                  { task.completedPomodoros > 0 ? ` (${task.completedPomodoros})` : "" }
-                  <div className="task__actions">
-                    <FlatButton
-                      onClick={ (e) => { e.stopPropagation(); this.props.selectTaskAndStartPomodoro(task); }}>
-                      Start
-                    </FlatButton>
-                    <FlatButton onClick={ (e) => { e.stopPropagation(); this.props.deleteTask(task); }}>
-                      Delete
-                    </FlatButton>
-                    <FlatButton>Done</FlatButton>
-                  </div>
-                </li>
-              );
-            })
+            this.props.tasks.map( (task) => taskItem(task) )
           }
         </ul>
       </Paper>

@@ -1,6 +1,10 @@
 @import 'material-ui/src/less/scaffolding';
 @import 'material-ui/src/less/components';
 @import 'roboto';
+@import (inline) 'material-design-icons/sprites/svg-sprite/svg-sprite-navigation.css';
+@import (inline) 'material-design-icons/sprites/svg-sprite/svg-sprite-av.css';
+@import (inline) 'material-design-icons/sprites/svg-sprite/svg-sprite-action.css';
+@import (inline) 'material-design-icons/sprites/svg-sprite/svg-sprite-content.css';
 
 .app {
   max-width: 600px;
@@ -38,10 +42,14 @@
 }
 
 .new-task-form__input {
-  width: 380px;
+  width: 460px;
   margin-right: 8px;
 }
 
 .task-detail__actions {
   text-align: center;
+}
+
+.mui-svg-icon {
+  transition: background-position 0s;
 }

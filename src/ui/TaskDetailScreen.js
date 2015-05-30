@@ -6,7 +6,7 @@ import TaskActions from "actions/TaskActions";
 import * as BreakActions from "actions/BreakActions";
 import * as PomodoroActions from "actions/PomodoroActions";
 import { formatDuration } from "services/TimeFormatter";
-import { FlatButton, Paper } from "material-ui";
+import { IconButton, SvgIcon, Paper } from "material-ui";
 
 let TaskDetailScreen = React.createClass({
 
@@ -54,29 +54,52 @@ let TaskDetailScreen = React.createClass({
 
   renderStartStopButton() {
     if (this.state.isPomodoroRunning) {
-      return <FlatButton onClick={ PomodoroActions.stop }>Stop</FlatButton>;
+      return (
+        <IconButton tooltip="Stop Pomodoro" onClick={ PomodoroActions.stop }>
+          <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_stop_24px" />
+        </IconButton>
+      );
     }
     if (this.state.isBreakRunning) {
-      return <FlatButton onClick={ BreakActions.stop }>Stop</FlatButton>;
+      return (
+        <IconButton tooltip="Stop Break" onClick={ BreakActions.stop }>
+          <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_stop_24px" />
+        </IconButton>
+      );
     }
 
-    return <FlatButton onClick={ PomodoroActions.start }>Start</FlatButton>;
+    return (
+      <IconButton tooltip="Start Pomodoro" onClick={ PomodoroActions.start }>
+        <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_play_arrow_24px" />
+      </IconButton>
+    );
   },
 
   render() {
     return (
-      <Paper zDepth={1}>
+      <Paper zDepth={0} style={{ textAlign: "center" }}>
         <h4>{ this.state.task.description }</h4>
-        {
-          this.renderContent()
-        }
-        <div>{ this.state.task.completedPomodoros } pomodoros completed</div>
+        <div style={{ margin: "20px 0 0", minHeight: 60 }}>
+          {
+            this.renderContent()
+          }
+          <div>{ this.state.task.completedPomodoros } pomodoros completed</div>
+        </div>
 
         <div className="task-detail__actions">
-          <FlatButton onClick={ this.deselectTask }>Back</FlatButton>
+          <IconButton tooltip="Back" onClick={ this.deselectTask }>
+            <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_arrow_back_24px" />
+          </IconButton>
+
           { this.renderStartStopButton() }
-          <FlatButton onClick={ this.deleteTask }>Delete</FlatButton>
-          <FlatButton>Finished</FlatButton>
+
+          <IconButton tooltip="Delete task" onClick={ this.deleteTask }>
+            <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_delete_24px" />
+          </IconButton>
+
+          <IconButton tooltip="Mark completed">
+            <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_done_24px" />
+          </IconButton>
         </div>
       </Paper>
     );
