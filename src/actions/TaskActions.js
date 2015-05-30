@@ -9,10 +9,13 @@ const SELECT_TASK = "TASK_ACTIONS__SELECT_TASK";
 const DESELECT_TASK = "TASK_ACTIONS__DESELECT_TASK";
 
 function createNewTask(task) {
-  Dispatcher.dispatch({
-    actionType: NEW_TASK_CREATED,
-    task,
-  });
+  PersistenceService.createTask(task)
+    .then((createdTask) => {
+      Dispatcher.dispatch({
+        actionType: NEW_TASK_CREATED,
+        task: createdTask,
+      });
+    });
 }
 
 function tasksLoaded(tasks) {
