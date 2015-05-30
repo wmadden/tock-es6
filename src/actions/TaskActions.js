@@ -25,11 +25,14 @@ function tasksLoaded(tasks) {
   });
 }
 
-function deleteTask({ id }) {
-  Dispatcher.dispatch({
-    actionType: DELETE_TASK,
-    id,
-  });
+function deleteTask(task) {
+  PersistenceService.deleteTask(task)
+    .then(() => {
+      Dispatcher.dispatch({
+        actionType: DELETE_TASK,
+        id: task.id,
+      });
+    });
 }
 
 function selectTask({ id }) {
