@@ -2,7 +2,6 @@ import React from "react";
 import TaskListScreen from "ui/TaskListScreen";
 import TaskDetailScreen from "ui/TaskDetailScreen";
 import TasksStore from "stores/TasksStore";
-import { branch } from "components/helpers";
 
 let App = React.createClass({
 
@@ -28,14 +27,18 @@ let App = React.createClass({
     };
   },
 
+  renderScreen() {
+    if (this.state.currentTask) {
+      return <TaskDetailScreen />;
+    }
+    return <TaskListScreen />;
+  },
+
   render() {
     return (
       <div className="app">
         <h4>Tock</h4>
-        { branch( this.state.currentTask,
-            () => <TaskDetailScreen />,
-            () => <TaskListScreen />
-          ) }
+        { this.renderScreen() }
       </div>
     );
   },
