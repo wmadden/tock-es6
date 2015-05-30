@@ -12,7 +12,7 @@ let TaskList = React.createClass({
   render() {
     function taskItem(task) {
       return (
-        <li className="task" onClick={ () => this.props.selectTask(task) }>
+        <li className="task cf" onClick={ () => this.props.selectTask(task) }>
           { task.description }
           { task.completedPomodoros > 0 ? ` (${task.completedPomodoros})` : "" }
           <div className="task__actions">
