@@ -32,6 +32,7 @@ function updatePomodoroDuration() {
   if (pomodoroDuration > FULL_POMODORO_DURATION) {
     stopPomodoro();
     setTimeout(PomodoroActions.finished, 0);
+    setTimeout(TaskActions.incrementCompletedPomodoros, 0);
   }
 }
 

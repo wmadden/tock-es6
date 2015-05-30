@@ -78,7 +78,7 @@ function handleAction(payload) {
   } else if (payload.actionType === TaskActions.DESELECT_TASK) {
     deselectTask();
     emitChange();
-  } else if (payload.actionType === PomodoroActions.FINISHED) {
+  } else if (payload.actionType === TaskActions.INCREMENT_COMPLETED_POMODOROS) {
     incrementCompletedPomodoros();
     emitChange();
   }

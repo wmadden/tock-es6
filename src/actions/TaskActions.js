@@ -1,12 +1,14 @@
 import * as PomodoroActions from "actions/PomodoroActions";
 import Dispatcher from "services/Dispatcher";
 import * as PersistenceService from "services/PersistenceService";
+import TasksStore from "stores/TasksStore";
 
 const TASKS_LOADED = "TASK_ACTIONS__TASK_LOADED";
 const NEW_TASK_CREATED = "TASK_ACTIONS__NEW_TASK_CREATED";
 const DELETE_TASK = "TASK_ACTIONS__DELETE_TASK";
 const SELECT_TASK = "TASK_ACTIONS__SELECT_TASK";
 const DESELECT_TASK = "TASK_ACTIONS__DESELECT_TASK";
+const INCREMENT_COMPLETED_POMODOROS = "TASK_ACTIONS__INCREMENT_COMPLETED_POMODOROS";
 
 function createNewTask(task) {
   PersistenceService.createTask(task)
@@ -53,16 +55,26 @@ function selectTaskAndStartPomodoro({ id }) {
   PomodoroActions.start();
 }
 
+function incrementCompletedPomodoros() {
+  Dispatcher.dispatch({
+    actionType: INCREMENT_COMPLETED_POMODOROS,
+  });
+  let currentTask = TasksStore.getCurrentTask();
+  PersistenceService.updateTask(currentTask);
+}
+
 export default {
   TASKS_LOADED,
   NEW_TASK_CREATED,
   DELETE_TASK,
   SELECT_TASK,
   DESELECT_TASK,
+  INCREMENT_COMPLETED_POMODOROS,
   tasksLoaded,
   deleteTask,
   selectTask,
   selectTaskAndStartPomodoro,
   deselectTask,
   createNewTask,
+  incrementCompletedPomodoros,
 };
