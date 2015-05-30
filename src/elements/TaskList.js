@@ -10,22 +10,24 @@ let TaskList = React.createClass({
   },
 
   render() {
+    let { selectTaskAndStartPomodoro, deleteTask, selectTask } = this.props;
+
     function taskItem(task) {
       return (
-        <li className="task cf" onClick={ () => this.props.selectTask(task) }>
+        <li className="task cf" onClick={ () => selectTask(task) }>
           { task.description }
           { task.completedPomodoros > 0 ? ` (${task.completedPomodoros})` : "" }
           <div className="task__actions">
             <IconButton
               tooltip="Start Pomodoro"
-              onClick={ (e) => { e.stopPropagation(); this.props.selectTaskAndStartPomodoro(task); }}
+              onClick={ (e) => { e.stopPropagation(); selectTaskAndStartPomodoro(task); }}
             >
               <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_play_arrow_24px" />
             </IconButton>
 
             <IconButton
               tooltip="Delete task"
-              onClick={ (e) => { e.stopPropagation(); this.props.deleteTask(task); }}
+              onClick={ (e) => { e.stopPropagation(); deleteTask(task); }}
             >
               <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_delete_24px" />
             </IconButton>
