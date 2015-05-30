@@ -1,4 +1,5 @@
 import * as BreakActions from "actions/BreakActions";
+import TaskActions from "actions/TaskActions";
 import Dispatcher from "services/Dispatcher";
 import { EventEmitter } from "events";
 
@@ -69,6 +70,9 @@ function handleAction(payload) {
     emitChange();
   } else if (payload.actionType === BreakActions.TICK) {
     updateBreakDuration();
+    emitChange();
+  } else if (payload.actionType === TaskActions.DESELECT_TASK) {
+    stopBreak();
     emitChange();
   }
 }
