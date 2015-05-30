@@ -70,7 +70,11 @@ function incrementCompletedPomodoros() {
 }
 
 function handleAction(payload) {
-  if (payload.actionType === TaskActions.NEW_TASK_CREATED) {
+  if (payload.actionType === TaskActions.TASKS_LOADED) {
+    let { tasks } = payload;
+    tasks.forEach(createTask);
+    emitChange();
+  } else if (payload.actionType === TaskActions.NEW_TASK_CREATED) {
     let { description } = payload.task;
     createTask({ description });
     emitChange();

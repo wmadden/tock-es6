@@ -1,6 +1,8 @@
 import * as PomodoroActions from "actions/PomodoroActions";
 import Dispatcher from "services/Dispatcher";
+import * as PersistenceService from "services/PersistenceService";
 
+const TASKS_LOADED = "TASK_ACTIONS__TASK_LOADED";
 const NEW_TASK_CREATED = "TASK_ACTIONS__NEW_TASK_CREATED";
 const DELETE_TASK = "TASK_ACTIONS__DELETE_TASK";
 const SELECT_TASK = "TASK_ACTIONS__SELECT_TASK";
@@ -12,6 +14,11 @@ function createNewTask(task) {
     task,
   });
 }
+
+function tasksLoaded(tasks) {
+  Dispatcher.dispatch({
+    actionType: TASKS_LOADED,
+    tasks,
   });
 }
 
@@ -41,10 +48,12 @@ function selectTaskAndStartPomodoro({ id }) {
 }
 
 export default {
+  TASKS_LOADED,
   NEW_TASK_CREATED,
   DELETE_TASK,
   SELECT_TASK,
   DESELECT_TASK,
+  tasksLoaded,
   deleteTask,
   selectTask,
   selectTaskAndStartPomodoro,
