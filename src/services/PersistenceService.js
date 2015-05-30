@@ -47,6 +47,8 @@ function getUnfinishedTasks() {
 
 function createTask(task) {
   let createdTask = _.pick(task, "description", "finished", "completedPomodoros", "estimatedPomodorosNeeded");
+  createdTask.completedPomodoros = createdTask.completedPomodoros || 0;
+  createdTask.estimatedPomodorosNeeded = createdTask.estimatedPomodorosNeeded || 0;
   return logTiming("createTask()",
     db.tasks
       .add(createdTask)
