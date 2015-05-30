@@ -18,6 +18,7 @@ let TaskList = React.createClass({
         onSubmit={ (e) => { e.preventDefault(); this.planTask(); } }>
 
         <TextField className="new-task-form__input"
+          autoFocus={true}
           value={ this.state.description }
           hintText="What are you working on next?"
           errorText={ this.state.errorText }
