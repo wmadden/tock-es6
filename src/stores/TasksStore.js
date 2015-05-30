@@ -4,16 +4,6 @@ import * as PomodoroActions from "actions/PomodoroActions";
 import Dispatcher from "services/Dispatcher";
 import { EventEmitter } from "events";
 
-let idCounter = 0;
-
-function newTask({ description }) {
-  return {
-    id: idCounter++,
-    completedPomodoros: 0,
-    description,
-  };
-}
-
 let tasks = new Immutable.List([]);
 let currentTask;
 
@@ -41,8 +31,8 @@ function emitChange() {
   eventEmitter.emit("change");
 }
 
-function createTask(task) {
-  tasks = tasks.push(newTask(task));
+function addTask(task) {
+  tasks = tasks.push(task);
 }
 
 function selectTask(taskId) {
@@ -72,11 +62,10 @@ function incrementCompletedPomodoros() {
 function handleAction(payload) {
   if (payload.actionType === TaskActions.TASKS_LOADED) {
     let { tasks } = payload;
-    tasks.forEach(createTask);
+    tasks.forEach(addTask);
     emitChange();
   } else if (payload.actionType === TaskActions.NEW_TASK_CREATED) {
-    let { description } = payload.task;
-    createTask({ description });
+    addTask(payload.task);
     emitChange();
   } else if (payload.actionType === TaskActions.DELETE_TASK) {
     let id = payload.id;
