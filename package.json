@@ -7,7 +7,6 @@
     "replacements": "{ \"version\": \"1\" }"
   },
   "scripts": {
-    "echo": "echo $npm_package_config_replacements",
     "clean": "rm -rf out",
     "mkdir": "mkdir -p out/js out/css .tmp out/chrome",
     "prebuild": "bin/run clean mkdir",
