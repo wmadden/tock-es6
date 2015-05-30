@@ -57,6 +57,14 @@ function createTask(task) {
   );
 }
 
+function updateTask(task) {
+  return logTiming("updateTask()",
+    db.tasks
+      .put(task)
+      .catch(errorHandler)
+  );
+}
+
 function deleteTask(task) {
   let { id } = task;
   return logTiming("deleteTask()",
@@ -72,4 +80,5 @@ export {
   getUnfinishedTasks,
   createTask,
   deleteTask,
+  updateTask,
 };
