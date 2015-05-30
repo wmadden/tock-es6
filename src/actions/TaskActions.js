@@ -1,17 +1,17 @@
 import * as PomodoroActions from "actions/PomodoroActions";
 import Dispatcher from "services/Dispatcher";
 
-const CREATE_NEW_TASK = "TASK_ACTIONS__CREATE_NEW_TASK";
+const NEW_TASK_CREATED = "TASK_ACTIONS__NEW_TASK_CREATED";
 const DELETE_TASK = "TASK_ACTIONS__DELETE_TASK";
 const SELECT_TASK = "TASK_ACTIONS__SELECT_TASK";
 const DESELECT_TASK = "TASK_ACTIONS__DESELECT_TASK";
 
-function createNewTask({ description }) {
+function createNewTask(task) {
   Dispatcher.dispatch({
-    actionType: CREATE_NEW_TASK,
-    spec: {
-      description,
-    },
+    actionType: NEW_TASK_CREATED,
+    task,
+  });
+}
   });
 }
 
@@ -41,7 +41,7 @@ function selectTaskAndStartPomodoro({ id }) {
 }
 
 export default {
-  CREATE_NEW_TASK,
+  NEW_TASK_CREATED,
   DELETE_TASK,
   SELECT_TASK,
   DESELECT_TASK,

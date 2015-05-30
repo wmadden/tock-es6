@@ -41,8 +41,8 @@ function emitChange() {
   eventEmitter.emit("change");
 }
 
-function createTask(spec) {
-  tasks = tasks.push(newTask(spec));
+function createTask(task) {
+  tasks = tasks.push(newTask(task));
 }
 
 function selectTask(taskId) {
@@ -70,8 +70,8 @@ function incrementCompletedPomodoros() {
 }
 
 function handleAction(payload) {
-  if (payload.actionType === TaskActions.CREATE_NEW_TASK) {
-    let { description } = payload.spec;
+  if (payload.actionType === TaskActions.NEW_TASK_CREATED) {
+    let { description } = payload.task;
     createTask({ description });
     emitChange();
   } else if (payload.actionType === TaskActions.DELETE_TASK) {

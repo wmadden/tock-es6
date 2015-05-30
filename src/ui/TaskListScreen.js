@@ -41,8 +41,8 @@ let TaskListScreen = React.createClass({
     );
   },
 
-  createNewTask(spec) {
-    TaskActions.createNewTask(spec);
+  createNewTask(task) {
+    TaskActions.createNewTask(task);
   },
 
   deleteTask(task) {
