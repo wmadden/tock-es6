@@ -21,9 +21,6 @@ function startPomodoro() {
 }
 
 function stopPomodoro() {
-  // if (!pomodoroRunning) {
-  //   throw new Error("Can't stop pomodoro because there isn't one running");
-  // }
   pomodoroRunning = false;
   pomodoroStartedAt = null;
   pomodoroDuration = 0;
