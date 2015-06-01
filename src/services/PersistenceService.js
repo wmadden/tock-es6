@@ -14,10 +14,6 @@ db.on("populate", () => {
 
 const SHOULD_LOG_TIMING = true;
 
-function open() {
-  return logTiming('open()', db.open());
-}
-
 function errorHandler(e) {
   /*eslint-disable no-console */
   console.log(e);
@@ -35,6 +31,10 @@ function logTiming(description, promise) {
     return result;
   });
   /*eslint-enable no-console */
+}
+
+function open() {
+  return logTiming("open()", db.open());
 }
 
 function getUnfinishedTasks() {
