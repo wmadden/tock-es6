@@ -44,13 +44,13 @@ let TaskList = React.createClass({
     }
 
     return (
-      <Paper zDepth={0}>
+      <div>
         <ul className="list--no-markers">
           {
             this.props.tasks.map( (task) => taskItem(task) )
           }
         </ul>
-      </Paper>
+      </div>
     );
   },
 
