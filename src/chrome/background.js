@@ -1,11 +1,5 @@
 /* globals chrome */
-
-import React from "react";
-import App from "ui/App";
-
-/*eslint-disable no-unused-vars */
-import AlarmService from "services/AlarmService";
-/*eslint-enable no-unused-vars */
+import bootAction from "actions/bootAction";
 
 function onLaunched() {
   let width = 420;
@@ -21,9 +15,7 @@ function onLaunched() {
     minWidth: width,
     minHeight: height,
   }, function windowCreated(createdWindow) {
-    function boot() {
-      React.render(<App />, createdWindow.contentWindow.document.body);
-    }
+    let boot = () => bootAction(createdWindow.contentWindow.document.body);
     createdWindow.contentWindow.document.addEventListener("DOMContentLoaded", boot, false);
   });
 }
