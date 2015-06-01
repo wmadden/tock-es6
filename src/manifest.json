@@ -4,7 +4,6 @@
     "version": "__version__",
     "manifest_version": 2,
     "permissions": [
-        "storage",
         "notifications"
     ],
     "icons": {
