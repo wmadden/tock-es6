@@ -62,7 +62,7 @@ function createTask(task) {
 function updateTask(task) {
   return logTiming("updateTask()",
     db.tasks
-      .put(task)
+      .update(task.id, task)
       .catch(errorHandler)
   );
 }
