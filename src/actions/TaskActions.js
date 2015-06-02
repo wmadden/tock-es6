@@ -8,6 +8,7 @@ const NEW_TASK_CREATED = "TASK_ACTIONS__NEW_TASK_CREATED";
 const DELETE_TASK = "TASK_ACTIONS__DELETE_TASK";
 const SELECT_TASK = "TASK_ACTIONS__SELECT_TASK";
 const DESELECT_TASK = "TASK_ACTIONS__DESELECT_TASK";
+const MARK_TASK_FINISHED = "TASK_ACTIONS__MARK_TASK_FINISHED";
 const INCREMENT_COMPLETED_POMODOROS = "TASK_ACTIONS__INCREMENT_COMPLETED_POMODOROS";
 
 function createNewTask(task) {
@@ -50,6 +51,14 @@ function deselectTask() {
   });
 }
 
+function markTaskFinished({ id }) {
+  Dispatcher.dispatch({
+    actionType: MARK_TASK_FINISHED,
+    id,
+  });
+  PersistenceService.updateTask({ id, finished: true });
+}
+
 function selectTaskAndStartPomodoro({ id }) {
   selectTask({ id });
   PomodoroActions.start();
@@ -68,11 +77,13 @@ export default {
   NEW_TASK_CREATED,
   DELETE_TASK,
   SELECT_TASK,
+  MARK_TASK_FINISHED,
   DESELECT_TASK,
   INCREMENT_COMPLETED_POMODOROS,
   tasksLoaded,
   deleteTask,
   selectTask,
+  markTaskFinished,
   selectTaskAndStartPomodoro,
   deselectTask,
   createNewTask,

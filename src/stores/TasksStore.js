@@ -1,6 +1,5 @@
 import Immutable from "bower_components/immutable/dist/immutable";
 import TaskActions from "actions/TaskActions";
-import * as PomodoroActions from "actions/PomodoroActions";
 import Dispatcher from "services/Dispatcher";
 import { EventEmitter } from "events";
 
@@ -59,6 +58,14 @@ function incrementCompletedPomodoros() {
   currentTask.completedPomodoros += 1;
 }
 
+function markTaskFinished(id) {
+  let task = tasks.filter((t) => t.id === id).get(0);
+  task.finished = true;
+  if (currentTask && currentTask.id === id) {
+    deselectTask();
+  }
+}
+
 function handleAction(payload) {
   if (payload.actionType === TaskActions.TASKS_LOADED) {
     let { tasks } = payload;
@@ -80,6 +87,9 @@ function handleAction(payload) {
     emitChange();
   } else if (payload.actionType === TaskActions.INCREMENT_COMPLETED_POMODOROS) {
     incrementCompletedPomodoros();
+    emitChange();
+  } else if (payload.actionType === TaskActions.MARK_TASK_FINISHED) {
+    markTaskFinished(payload.id);
     emitChange();
   }
 }
