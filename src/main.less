@@ -33,8 +33,18 @@
   }
 }
 
+&.task--finished {
+  color: #A3A3A3;
+  background-color: #F9F9F9;
+
+  .task__description, .task__description span {
+    text-decoration: line-through;
+  }
+}
+
 .task__actions {
   float: right;
+  color: #ddd;
 }
 
 .list--no-markers {
