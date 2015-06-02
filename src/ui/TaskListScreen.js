@@ -33,7 +33,8 @@ let TaskListScreen = React.createClass({
           <TaskList tasks={ this.state.tasks }
             selectTask={ this.selectTask }
             selectTaskAndStartPomodoro={ this.selectTaskAndStartPomodoro }
-            deleteTask={ this.deleteTask } />
+            deleteTask={ this.deleteTask }
+            markTaskFinished={ TaskActions.markTaskFinished } />
         </div>
 
         <NewTaskForm newTask={ this.createNewTask }/>

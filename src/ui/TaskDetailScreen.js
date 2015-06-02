@@ -97,7 +97,7 @@ let TaskDetailScreen = React.createClass({
             <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_delete_24px" />
           </IconButton>
 
-          <IconButton tooltip="Mark completed">
+          <IconButton tooltip="Mark completed" onClick={ this.markTaskFinished }>
             <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_done_24px" />
           </IconButton>
         </div>
@@ -109,12 +109,12 @@ let TaskDetailScreen = React.createClass({
     TaskActions.deselectTask();
   },
 
-  // completeTask() {
-  //   TaskActions.completeTask();
-  // },
-
   deleteTask() {
     TaskActions.deleteTask(this.state.task);
+  },
+
+  markTaskFinished() {
+    TaskActions.markTaskFinished(this.state.task);
   },
 
 });
