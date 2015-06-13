@@ -21,9 +21,11 @@ function requestPermission() {
   });
 }
 
-function showNotification(text) {
-  let notification = new Notify(text, {});
-  return requestPermission().then(() => notification.show);
+function showNotification(text, options) {
+  let notification = new Notify(text, options);
+  return requestPermission().then(() => {
+    notification.show();
+  });
 }
 
 export default {
