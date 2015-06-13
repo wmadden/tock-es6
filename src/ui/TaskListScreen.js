@@ -40,6 +40,8 @@ let TaskListScreen = React.createClass({
 
         <NewTaskForm newTask={ this.createNewTask }/>
 
+        <br/>
+
         <NotificationPermissionToggle />
       </div>
     );

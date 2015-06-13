@@ -24,11 +24,11 @@ let TaskList = React.createClass({
           errorText={ this.state.errorText }
           onChange={ this.setDescription } />
 
-        <IconButton tooltip="Plan task">
+        <IconButton tooltip="Plan task (&#x23ce;)">
           <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_add_24px" />
         </IconButton>
 
-        <IconButton tooltip="Start Pomodoro">
+        <IconButton tooltip="Start pomodoro (&#x21E7; + &#x23ce;)">
           <SvgIcon styles={{ height: 24, width: 24 }} className="svg-ic_play_arrow_24px" />
         </IconButton>
       </form>
