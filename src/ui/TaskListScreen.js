@@ -1,5 +1,6 @@
 import React from "react";
 import NewTaskForm from "elements/NewTaskForm";
+import NotificationPermissionToggle from "elements/NotificationPermissionToggle";
 import TaskList from "elements/TaskList";
 import TasksStore from "stores/TasksStore";
 import TaskActions from "actions/TaskActions";
@@ -38,6 +39,8 @@ let TaskListScreen = React.createClass({
         </div>
 
         <NewTaskForm newTask={ this.createNewTask }/>
+
+        <NotificationPermissionToggle />
       </div>
     );
   },
