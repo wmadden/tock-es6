@@ -1,12 +1,14 @@
 import React from "react";
 import TasksStore from "stores/TasksStore";
 import PomodoroStore from "stores/PomodoroStore";
+import { FULL_POMODORO_DURATION } from "stores/PomodoroStore";
 import BreakStore from "stores/BreakStore";
+import { FULL_BREAK_DURATION } from "stores/BreakStore";
 import TaskActions from "actions/TaskActions";
 import * as BreakActions from "actions/BreakActions";
 import * as PomodoroActions from "actions/PomodoroActions";
-import { formatDuration } from "services/TimeFormatter";
 import { IconButton, SvgIcon, Paper } from "material-ui";
+import Clockface from "elements/Clockface";
 
 let TaskDetailScreen = React.createClass({
 
@@ -44,10 +46,20 @@ let TaskDetailScreen = React.createClass({
 
   renderContent() {
     if (this.state.isPomodoroRunning) {
-      return `running: ${formatDuration(this.state.pomodoroDuration)}`;
+      return (
+        <div>
+          Pomodoro running<br/>
+          <Clockface time={ FULL_POMODORO_DURATION - this.state.pomodoroDuration } />
+        </div>
+      );
     }
     if (this.state.isBreakRunning) {
-      return `on break: ${formatDuration(this.state.breakDuration)}`;
+      return (
+        <div>
+          On break<br/>
+          <Clockface time={ FULL_BREAK_DURATION - this.state.breakDuration } />
+        </div>
+      );
     }
     return "";
   },

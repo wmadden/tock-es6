@@ -4,7 +4,7 @@ import TasksStore from "stores/TasksStore";
 import Dispatcher from "services/Dispatcher";
 import { EventEmitter } from "events";
 
-const FULL_POMODORO_DURATION = 25 * 60 * 1000;
+const FULL_POMODORO_DURATION = 5 * 1000;
 let pomodoroRunning = false;
 let pomodoroStartedAt;
 let pomodoroDuration = 0;
@@ -91,3 +91,4 @@ function handleAction(payload) {
 PomodoroStore.dispatchToken = Dispatcher.register(handleAction);
 
 export default PomodoroStore;
+export { FULL_POMODORO_DURATION };

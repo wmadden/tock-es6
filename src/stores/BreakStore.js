@@ -3,7 +3,7 @@ import TaskActions from "actions/TaskActions";
 import Dispatcher from "services/Dispatcher";
 import { EventEmitter } from "events";
 
-const BREAK_DURATION = 5 * 60 * 1000;
+const FULL_BREAK_DURATION = 5 * 1000;
 let breakRunning = false;
 let breakStartedAt;
 let breakDuration = 0;
@@ -28,7 +28,7 @@ function stopBreak() {
 
 function updateBreakDuration() {
   breakDuration = Date.now() - breakStartedAt;
-  if (breakDuration > BREAK_DURATION) {
+  if (breakDuration > FULL_BREAK_DURATION) {
     stopBreak();
     setTimeout(BreakActions.finished, 0);
   }
@@ -80,3 +80,4 @@ function handleAction(payload) {
 BreakStore.dispatchToken = Dispatcher.register(handleAction);
 
 export default BreakStore;
+export { FULL_BREAK_DURATION };
