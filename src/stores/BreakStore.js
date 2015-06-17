@@ -3,7 +3,7 @@ import TaskActions from "actions/TaskActions";
 import Dispatcher from "services/Dispatcher";
 import { EventEmitter } from "events";
 
-const FULL_BREAK_DURATION = 5 * 1000;
+const FULL_BREAK_DURATION = 5 * 60 * 1000;
 let breakRunning = false;
 let breakStartedAt;
 let breakDuration = 0;
